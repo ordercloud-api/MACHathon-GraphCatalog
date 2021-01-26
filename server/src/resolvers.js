@@ -1,5 +1,7 @@
 module.exports = {
     Query: {
+      products: (_, __, { dataSources }) =>
+        dataSources.ordercloudAPI.getAllProducts(),
       launches: (_, __, { dataSources }) =>
         dataSources.launchAPI.getAllLaunches(),
       launch: (_, { id }, { dataSources }) =>
@@ -47,6 +49,10 @@ module.exports = {
           launches: [launch],
         };
       },
+    },
+    Product: {
+        images: (product, _, { dataSources }) => 
+          dataSources.contentfulAPI.getImagesForProduct({ productID: product.id}),
     },
     Mission: {
         // The default size is 'LARGE' if not provided
