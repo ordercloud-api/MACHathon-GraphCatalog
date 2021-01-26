@@ -3,6 +3,8 @@ const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./schema');
 const LaunchAPI = require('./datasources/launch');
 const UserAPI = require('./datasources/user');
+const ContentfulAPI = require('./datasources/contentful');
+const OrdercloudAPI = require('./datasources/ordercloud');
 const resolvers = require('./resolvers');
 const { createStore } = require('./utils');
 const isEmail = require('isemail');
@@ -23,6 +25,8 @@ const server = new ApolloServer({
       return { user: { ...user.dataValues } };
     },
     dataSources: () => ({
+        contentfulAPI : new ContentfulAPI(),
+        ordercloudAPI : new OrdercloudAPI(),
         launchAPI: new LaunchAPI(),
         userAPI: new UserAPI({ store })
     }) 
