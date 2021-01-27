@@ -1,17 +1,21 @@
-const { RESTDataSource } = require('apollo-datasource-rest');
-
+const { RESTDataSource, RequestOptions } = require('apollo-datasource-rest');
 class OrdercloudAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = 'XXXXXXXX';
+	this.baseURL = 'https://sandboxapi.ordercloud.io/';
   }
 
+  willSendRequest(request) {
+	request.headers.set('Authorization', "hardCodedUntilLoginFrontEnd")
+  };
+
   async getAllProducts() {
-    const response = this.getStaticData();
-    return Array.isArray(response.Items)
-      ? response.Items.map(product => this.productReducer(product))
-      : [];
-  }
+	// const response = this.getStaticData();
+    // return Array.isArray(response.Items)
+    //   ? response.Items.map(product => this.productReducer(product))
+	//   : [];
+	return this.getAllOCProducts();
+  };
 
   productReducer(product) {
     return {
@@ -20,6 +24,14 @@ class OrdercloudAPI extends RESTDataSource {
         description: product.Description,
         quantityAvailable: product.Inventory.QuantityAvailable,
     };
+  }
+  
+  async getAllOCProducts() {
+	const response= await this.get('v1/products');
+    const ocProducts= Array.isArray(response.Items)
+      ? response.Items.map(product => this.productReducer(product))
+	  : [];
+	  return ocProducts;
   }
 
   getStaticData() {
