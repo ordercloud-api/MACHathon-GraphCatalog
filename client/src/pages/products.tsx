@@ -1,7 +1,7 @@
 import React, { Fragment, useState }  from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { gql, useQuery } from '@apollo/client'
-import { LaunchTile, Header, Button, Loading } from '../components';
+import { ProductTitle, Header, Button, Loading } from '../components';
 
 export const PRODUCT_TITLE_DATA = gql`
     fragment ProductTitle on Product{
@@ -12,6 +12,7 @@ export const PRODUCT_TITLE_DATA = gql`
         images{
             url
         }
+        price
     }
     `;
 
@@ -44,7 +45,7 @@ const Products: React.FC<ProductProps> = ()=>{
         <Fragment>
             {/* <Header/> */}
             {data.products && data.products.map( (product:any) =>(
-                <pre>{JSON.stringify(product)}</pre>
+                <ProductTitle key={product.id} product={product}/>
     )) }
         </Fragment>
     )
