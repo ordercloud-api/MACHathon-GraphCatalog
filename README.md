@@ -20,3 +20,7 @@ Query your product catalog's commerce data and static content through one GraphQ
 3. `npm start`
 4. Navigate to [http://localhost:3000/](http://localhost:3000/)
 
+## Account Credentials
+
+We've put our sandbox account credentials in `./server/src/config.js` in order to make it easy to get up and running quickly. To connect your own Ordercloud or Contentful account, edit the values in that file. 
+
