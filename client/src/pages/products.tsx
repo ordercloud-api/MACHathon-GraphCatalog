@@ -16,7 +16,6 @@ export const PRODUCT_TITLE_DATA = gql`
     }
     `;
 
-
 export const GET_PRODUCTS = gql`
   query GetProductList{
     products{
@@ -27,6 +26,7 @@ export const GET_PRODUCTS = gql`
 `;
 
 
+
 interface ProductProps extends RouteComponentProps {}
 
 const Products: React.FC<ProductProps> = ()=>{
@@ -35,10 +35,7 @@ const Products: React.FC<ProductProps> = ()=>{
         loading,
         error,
         fetchMore,
-      } = useQuery<
-       any,
-        any
-      >(GET_PRODUCTS);
+      } = useQuery(GET_PRODUCTS);
 
       if (!data) return <p>Not found</p>;
     return(

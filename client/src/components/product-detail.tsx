@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'react-emotion';
 
 import { unit } from '../styles';
-import { cardClassName, getBackgroundImage } from './launch-tile';
+import { cardClassName, getBackgroundImage } from './product-tile';
 
-const LaunchDetail: React.FC<any> = ({ id, site, rocket }: any) => (
+const ProductDetail: React.FC<any> = ({ id, site, rocket }: any) => (
   <Card
     style={{
       backgroundImage: getBackgroundImage(id as string),
@@ -26,4 +26,4 @@ const Card = styled('div')(cardClassName, {
   marginBottom: unit * 4,
 });
 
-export default LaunchDetail;
+export default ProductDetail;

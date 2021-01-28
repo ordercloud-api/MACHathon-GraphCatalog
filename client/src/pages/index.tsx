@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Router } from '@reach/router';
 
-import Launch from './launch';
-import Launches from './launches';
+import Product from './product';
+
 import Cart from './cart';
 import Profile from './profile';
 import Products from './products';
@@ -14,7 +14,7 @@ export default function Pages() {
       <PageContainer>
         <Router primary={false} component={Fragment}>
           <Products path="/"/>
-          <Launch path="launch/:launchId" />
+          <Product path="product/:productId" />
           <Cart path="cart" />
           <Profile path="profile" />
         </Router>
