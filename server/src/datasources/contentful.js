@@ -13,16 +13,12 @@ const contentful = require("contentful");
 //   .catch(err => console.log(err));
 
 class ContentfulAPI extends RESTDataSource {
-  constructor() {
+  constructor(config) {
     super();
     this.client = contentful.createClient({
-      // This is the space ID. A space is like a project folder in Contentful terms
-      space: "vcszj21qq600",
-      // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
-      accessToken:
-        "52f972f2c0507ba5ca116835e6ea5026ecfdb0a85034e82a570e99d7d846b65f",
+      space: config.contentful.space,
+      accessToken: config.contentful.accessToken
     });
-    this.baseURL = "XXXXXXXX";
   }
 
   async getImagesForProduct({ contentfulEntryID }) {
