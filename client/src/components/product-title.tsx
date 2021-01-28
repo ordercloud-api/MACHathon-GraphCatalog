@@ -26,11 +26,10 @@ export default ({ product }: any) => {
       <h5 style={{ paddingBottom: "8px" }}>{description}</h5>
       <div>
         <img src={images[getRandomInt(4)].url}></img>
-        {/* <div>{price}</div> */}
       </div>
       <div>
         <div style={{ display: "flex", textAlign: "center" }}>
-          <h2 style={{ flex: "1 0 0", color: colors.primary }}>{pricedummy}</h2>
+          <h2 style={{ flex: "1 0 0", color: colors.primary }}>{price}</h2>
         </div>
       </div>
     </StyledLink>
