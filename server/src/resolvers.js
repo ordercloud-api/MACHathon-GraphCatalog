@@ -6,5 +6,7 @@ module.exports = {
     Product: {
         images: (product, _, { dataSources }) => 
           dataSources.contentfulAPI.getImagesForProduct({ productID: product.id}),
+        price: (product, _, { dataSources }) => 
+          dataSources.ordercloudAPI.getPriceForProduct(product.id),
     }
   };

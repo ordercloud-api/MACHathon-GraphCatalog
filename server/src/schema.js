@@ -13,7 +13,7 @@ const typeDefs = gql`
         id: String
         name: String
         description: String
-        price: Int
+        price: Float
         quantityAvailable: Int
         images: [Asset]
     }
