@@ -1,10 +1,12 @@
 module.exports = {
-  Query: {
-    products: (_, __, { dataSources }) =>
-      dataSources.ordercloudAPI.getAllProducts(),
-  },
-  Product: {
-    images: (product, _, { dataSources }) =>
-      dataSources.contentfulAPI.getImagesForProduct({ productID: product.id }),
-  },
-};
+    Query: {
+      products: (_, __, { dataSources }) =>
+        dataSources.ordercloudAPI.getAllProducts(),
+    },
+    Product: {
+        images: (product, _, { dataSources }) => 
+          dataSources.contentfulAPI.getImagesForProduct({ productID: product.id}),
+        price: (product, _, { dataSources }) => 
+          dataSources.ordercloudAPI.getPriceForProduct(product.id),
+    }
+  };
