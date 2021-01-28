@@ -36,7 +36,9 @@ export default ({ product }: any) => {
       </div>
       <div>
         <div style={{ display: "flex", textAlign: "center" }}>
-          <h2 style={{ flex: "1 0 0", color: colors.primary }}>{price}</h2>
+          <h2 style={{ flex: "1 0 0", color: colors.primary }}>
+            {price ? `$${price}` : ""}
+          </h2>
         </div>
       </div>
     </StyledLink>
