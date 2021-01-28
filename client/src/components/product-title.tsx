@@ -14,6 +14,7 @@ const getRandomInt = (max: number) => {
 const pricedummy = "$19.99";
 export default ({ product }: any) => {
   const { id, name, description, price, images } = product;
+  console.log("hey whats the images", images);
   return (
     <StyledLink
       to={`/launch/${id}`}
@@ -25,7 +26,13 @@ export default ({ product }: any) => {
       <h3>{name}</h3>
       <h5 style={{ paddingBottom: "8px" }}>{description}</h5>
       <div>
-        <img src={images[getRandomInt(4)].url}></img>
+        <img
+          src={
+            images?.[0]?.url
+              ? `https://${images[0].url}`
+              : ` https://via.placeholder.com/150`
+          }
+        ></img>
       </div>
       <div>
         <div style={{ display: "flex", textAlign: "center" }}>
